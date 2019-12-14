@@ -23,7 +23,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import HelloWorldApp from './views/hello-world-page';
+import MainPage from './views/main-page';
 
 const App: () => React$Node = () => {
   return (
@@ -112,4 +112,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HelloWorldApp;
+export default MainPage;
