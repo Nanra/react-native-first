@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
-import { Text, TextInput, StyleSheet, Button, View } from 'react-native';
+import { Text, TextInput, StyleSheet, Button, View, Alert} from 'react-native';
 
 export default class HelloWorldApp extends Component {
 
+    constructor() {
+        super();
+        this.state = {
+            value: ""
+        }
+        this.userNameChangeText = this.userNameChangeText.bind(this)
+      }
+
+    // Username handlers
+    userNameChangeText(newText) {
+        this.setState({
+            value: newText
+        })
+        console.log(newText);
+        
+
+    }
+    
+    
     // Method For Login
     _onPressButton() {
-        alert('Login Berhasil')
+        Alert.alert('Login Berhasil', 'Selamat Datang Boss')
         console.log("Button Clicked");
         
     }
@@ -16,8 +35,11 @@ export default class HelloWorldApp extends Component {
 
                 <View style={styles.loginInfo}>
                     <Text style={{ marginBottom: 10, fontSize: 35, color: "#4A4A4A", alignItems: "center"}}>Login</Text>
-                    <TextInput style={{ marginBottom: 10, paddingLeft: 10, width: 250, backgroundColor: "#CCCCCC", borderRadius: 10 }} placeholder="Username"></TextInput>
-                    <TextInput style={{ marginBottom: 10, paddingLeft: 10, width: 250, backgroundColor: "#CCCCCC", borderRadius: 10 }} placeholder="Password"></TextInput>
+                    <TextInput
+                    defaultValue={this.state.value}
+                    onChangeText={this.userNameChangeText}
+                    style={{ marginBottom: 10, paddingLeft: 10, width: 250, backgroundColor: "#CCCCCC", borderRadius: 10 }} placeholder="Username"></TextInput>
+                    <TextInput secureTextEntry={true} style={{ marginBottom: 10, paddingLeft: 10, width: 250, backgroundColor: "#CCCCCC", borderRadius: 10 }} placeholder="Password"></TextInput>
                 </View>
 
                 <View style={styles.buttonContainer}>
@@ -28,9 +50,6 @@ export default class HelloWorldApp extends Component {
                         color="orange"
                     />
                 </View>
-
-                
-
 
             </View>
         );
